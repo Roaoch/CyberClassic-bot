@@ -43,8 +43,9 @@ async def start(msg: Message):
     await msg.answer(
         'Привет, я нейросеть генерирующий тексты. Я обучен на корпусе текстов Фёдора Михаайловича Достоеевского!\nSpecial thanks:\
             \n    Фёдор Михаайлович Достоеевский\
-            \nРазработчики:\
+            \nРазработчик:\
             \n    Горшенин А.К\
+            \nСоздание датасета и тестирование\
             \n    Мыльников Н.В\
             \n    Колин А.В\
             \n    Закиров Р.М\
@@ -62,5 +63,4 @@ async def text_handler(msg: Message):
     await msg.answer(f'Достоевский: {text}', reply_markup=menu_keyboard)
 
 if __name__ == "__main__":
-    logger.info('Model has been prepared')
     asyncio.run(main())

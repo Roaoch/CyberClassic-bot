@@ -6,8 +6,8 @@ from aiogram.types import \
 
 menu_inline = InlineKeyboardMarkup(inline_keyboard=[
     [
-        InlineKeyboardButton(text='GitHub', url='https://github.com/Roaoch/CyberClassic'),
-        InlineKeyboardButton(text='HuggingHub', url='https://huggingface.co/Roaoch/CyberClassic')
+        InlineKeyboardButton(text='GitHub', url='https://github.com/Roaoch'),
+        InlineKeyboardButton(text='HuggingHub', url='https://huggingface.co/Roaoch')
     ]
 ])
 menu_keyboard = ReplyKeyboardMarkup(
