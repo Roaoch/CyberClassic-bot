@@ -2,7 +2,7 @@ FROM python:3.9
 
 WORKDIR /app
 
-COPY ./src/bot ./src/bot
+COPY ./src ./src
 COPY ./requirements.txt ./requirements.txt
 COPY ./main.py ./main.py
 
