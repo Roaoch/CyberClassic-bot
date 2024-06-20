@@ -43,6 +43,7 @@ async def start(msg: Message):
     await msg.answer(
         'Привет, я нейросеть генерирующий тексты. Я обучен на корпусе текстов Фёдора Михаайловича Достоеевского!\nSpecial thanks:\
             \n    Фёдор Михаайлович Достоеевский\
+            \n    Александр Иванович Куприн\
             \nРазработчик:\
             \n    Горшенин А.К\
             \nСоздание датасета и тестирование\
@@ -51,15 +52,29 @@ async def start(msg: Message):
             \n    Закиров Р.М\
             \n    Смирнов И.С\
             \n    Воробъёв А.И\
-            \nМои потроха:',
+            \nДизайнер:\
+            \n    Кулева Д.А\
+            \nИсходный код',
         reply_markup=menu_inline
     )
-    await msg.answer('Чтобы сгенерировать новое предложение - нажмите на кнопку клавиатуры', reply_markup=menu_keyboard)
+    await msg.answer('Чтобы сгенерировать новое предложение - нажмите на кнопку клавиатуры. Или просто отправьте мне какое-нибудь сообщение', reply_markup=menu_keyboard)
 
 @router.message(F.text == 'Сгенерировать предложение')
 async def text_handler(msg: Message):
     await msg.answer('Подождите буквально пару секунд')
     text = json.loads(requests.get('https://roaoch-cyberclassic.hf.space/').text)['text']
+    await msg.answer(f'Достоевский: {text}', reply_markup=menu_keyboard)
+
+@router.message()
+async def random_msg(msg: Message):
+    promt = msg.text
+    text: str = json.loads(requests.get(
+        'https://roaoch-cyberclassic.hf.space/answer',
+        params={
+            'promt': promt
+        }
+    ).text)['text']
+    text = text[len(promt) + 3:]
     await msg.answer(f'Достоевский: {text}', reply_markup=menu_keyboard)
 
 if __name__ == "__main__":
