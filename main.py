@@ -74,7 +74,6 @@ async def random_msg(msg: Message):
             'promt': promt
         }
     ).text)['text']
-    text = text[len(promt) + 3:]
     await msg.answer(f'Достоевский: {text}', reply_markup=menu_keyboard)
 
 if __name__ == "__main__":
